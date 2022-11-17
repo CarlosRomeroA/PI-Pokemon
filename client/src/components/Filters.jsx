@@ -1,0 +1,63 @@
+import { orderByNameOrStrengh, filterPokemonsByCreated, filterPokemonsByType} from "../redux/actions";
+import styles from '../styles/Filters.module.css';
+import { useState, } from "react";
+import { useDispatch, useSelector} from "react-redux";
+
+
+export default function Filters() {
+
+const dispatch = useDispatch()
+const [ currentPage, setCurrentPage ] = useState(1)
+const [order, setOrder] = useState('')
+const types = useSelector((state => state.types))
+
+function handleSort(e) {
+    e.preventDefault();
+    dispatch(orderByNameOrStrengh(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordenado ${e.target.value}`)
+  }
+
+  function handleFilterPokemonByCreated(e) {
+    dispatch(filterPokemonsByCreated(e.target.value))
+  }
+
+  function handleFilterByType(e) {
+    dispatch(filterPokemonsByType(e.target.value))
+}  
+
+return (
+    <div className={styles.sectionFilters}>
+        <div className={styles.divFilter}>
+        <span>Filtros :</span>
+        <select onChange={e => handleSort(e)} className={styles.select}>
+            <option value="normal">Normal</option>
+            <option value="asc">A - Z</option>
+            <option value="desc">Z - A</option>
+            <option value="atkH">Highest Attack</option>
+            <option value="atkL">Lowest Attack</option>
+        </select>
+        </div>
+        <div className={styles.divFilter}>
+        <span>FIltro por origen: </span>
+        <select onChange={ e => handleFilterPokemonByCreated(e)} className={styles.select}>
+            <option value="All">Todos</option>
+            <option value="Created">Creados</option>
+            <option value="Api">Originales</option>
+        </select>
+        </div>
+
+        <div className={styles.divFilter}>
+        <span>Filtro por tipo: </span>
+        <select onChange={ e => handleFilterByType(e)} className={styles.select}>
+            <option value="All">Todos</option>
+            {
+            types?.map( type => (
+                <option value={type.name} key={type.name}>{type.name}</option>
+            ))
+            }
+        </select>
+        </div>
+    </div>
+)
+        }
