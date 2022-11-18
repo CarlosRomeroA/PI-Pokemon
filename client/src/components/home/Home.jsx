@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, filterPokemonsByCreated, getTypes, filterPokemonsByType, orderByName, orderByNameOrStrengh, } from "../redux/actions";
+import { getPokemons, filterPokemonsByCreated, getTypes, filterPokemonsByType, orderByName, orderByNameOrStrengh, } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import Card from "./Card";
-import Paginado from "./Pagination";
-import "../styles/Card.css"
-import SearchBar from "./SearchBar";
-import Nav from "./Nav";
-import Filters from './Filters';
+import Card from "../card/Card";
+import Paginado from "../pagination/Pagination";
+import "../card/Card.css"
+import Nav from "../nav/Nav";
+import Filters from '../filters/Filters';
 
 export default function Home() {
     

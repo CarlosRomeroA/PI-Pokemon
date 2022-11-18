@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getNamePokemons } from "../redux/actions";
-import styles from "../styles/SearchBar.module.css";
+import { getNamePokemons } from "../../redux/actions";
+import styles from "../searchBar/SearchBar.module.css";
+import lupa from "../../images/lupa.png";
 
 export default function SearchBar() {
     const dispatch = useDispatch()
@@ -20,10 +21,11 @@ export default function SearchBar() {
     }
 
     return (
-        <div>
+    
+        <div className={styles.div}>
             <input 
                 type="text"
-                placeholder="Busca un pokemon por su nombre..." 
+                placeholder="Search Pokemon by name..." 
                 onChange={(e) => handleInputChange(e)}
                 className={styles.inputSearch}  
             />
@@ -31,8 +33,10 @@ export default function SearchBar() {
                 type="submit"
                 onClick={(e) => handleSubmit(e)}
                 className={styles.btnSearch}
-                > Buscar
+                > <img src={lupa} alt="" className={styles.img}/>
             </button>
         </div>
+
+        
     )
 }

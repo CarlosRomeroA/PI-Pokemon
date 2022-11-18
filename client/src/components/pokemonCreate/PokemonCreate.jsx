@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import { Link, useHistory } from "react-router-dom";
-import { getTypes, postPokemon } from "../redux/actions";
+import { getTypes, postPokemon } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import Nav from "./Nav";
+import Nav from "../nav/Nav";
 
 // function validate(input) {
 //   let errors = {};
@@ -181,4 +181,3 @@ function PokemonCreate() {
 }
 
 export default PokemonCreate;
-

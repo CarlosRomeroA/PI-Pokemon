@@ -1,5 +1,5 @@
-import React from "react"
-import "../styles/DetailName.css" 
+import React from "react";
+import "../detailName/DetailName.css";
 
 export default function DetailName () {
 

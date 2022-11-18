@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../redux/actions";
+import { getDetail } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import styles from "../styles/Detail.module.css";
-import DetailName from "./DetailName";
-import logo from '../images/logo.png'
+import styles from "../detail/Detail.module.css";
+import DetailName from "../detailName/DetailName";
+import logo from '../../images/logo.png';
 
 export default function Detail (props) {
     console.log(props)

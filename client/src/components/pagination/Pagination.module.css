@@ -1,6 +1,5 @@
 .pagination{
-   
-    margin-bottom: 0.5rem;
+    margin-top: 1rem;
     padding: 0.5rem 0px;
 }
 
@@ -9,8 +8,7 @@
     background-color: rgb(44, 42, 42);
     color:white;
     border-radius: 30px;
-    padding: 4px 8px;
-    border:none;
+    padding: 10px 14px;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
@@ -31,5 +29,5 @@ button[disabled]{
 }
 
 .pagination span{
-    font-size: 1.1rem;
+    font-size: 1.5rem;
 }

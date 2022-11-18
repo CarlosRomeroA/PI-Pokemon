@@ -1,5 +1,5 @@
-import { orderByNameOrStrengh, filterPokemonsByCreated, filterPokemonsByType} from "../redux/actions";
-import styles from '../styles/Filters.module.css';
+import { orderByNameOrStrengh, filterPokemonsByCreated, filterPokemonsByType} from "../../redux/actions";
+import styles from '../filters/Filters.module.css';
 import { useState, } from "react";
 import { useDispatch, useSelector} from "react-redux";
 
@@ -29,9 +29,9 @@ function handleSort(e) {
 return (
     <div className={styles.sectionFilters}>
         <div className={styles.divFilter}>
-        <span>Filtros :</span>
+        <span>Order by:</span>
         <select onChange={e => handleSort(e)} className={styles.select}>
-            <option value="normal">Normal</option>
+            {/* <option value="normal">Normal</option> */}
             <option value="asc">A - Z</option>
             <option value="desc">Z - A</option>
             <option value="atkH">Highest Attack</option>
@@ -39,18 +39,18 @@ return (
         </select>
         </div>
         <div className={styles.divFilter}>
-        <span>FIltro por origen: </span>
+        <span>View: </span>
         <select onChange={ e => handleFilterPokemonByCreated(e)} className={styles.select}>
-            <option value="All">Todos</option>
-            <option value="Created">Creados</option>
-            <option value="Api">Originales</option>
+            <option value="All">All Pokemons</option>
+            <option value="Created">Created</option>
+            <option value="Api">Originals</option>
         </select>
         </div>
 
         <div className={styles.divFilter}>
-        <span>Filtro por tipo: </span>
+        <span>Filter by: </span>
         <select onChange={ e => handleFilterByType(e)} className={styles.select}>
-            <option value="All">Todos</option>
+            <option value="All">All Types</option>
             {
             types?.map( type => (
                 <option value={type.name} key={type.name}>{type.name}</option>

@@ -1,5 +1,3 @@
-
-
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
 *, *:before, *:after {
   box-sizing: border-box;
@@ -63,7 +61,6 @@ body {
   top: -140px;
   left: -70px;
 }
-
 .clash-card__image--archer {
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/archer-bg.jpg");
 }
@@ -73,7 +70,6 @@ body {
   top: -34px;
   left: -37px;
 }
-
 .clash-card__image--giant {
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/giant-bg.jpg");
 }
