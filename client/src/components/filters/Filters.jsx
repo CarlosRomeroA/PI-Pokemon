@@ -31,7 +31,7 @@ return (
         <div className={styles.divFilter}>
         <span>Order by:</span>
         <select onChange={e => handleSort(e)} className={styles.select}>
-            {/* <option value="normal">Normal</option> */}
+            <option value="normal">Normal</option>
             <option value="asc">A - Z</option>
             <option value="desc">Z - A</option>
             <option value="atkH">Highest Attack</option>

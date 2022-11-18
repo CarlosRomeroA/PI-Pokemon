@@ -15,14 +15,15 @@
 
 .logo {
     padding: 0.5rem;
-    width: 200px;
+    /* width: 200px; */
+    height: 70px;
 }
 
 .btnCreatePokemon{
-    border-radius: 2rem;
-    padding: 0.7rem 1.5rem;
+    border-radius: 1.5rem;
+    padding: 0.6rem 1.4rem;
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: bold;
     border: none;
     background-color: rgb(80, 78, 78);

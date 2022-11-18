@@ -33,7 +33,7 @@ function rootReducer(state = initialState, action) {
           : created
         }
 
-    case 'ORDER_BY_NAME_OR_STRENGHORDER_BY_NAME_OR_STRENGH':
+    case 'ORDER_BY_NAME_OR_STRENGH':
       // let sorterArr = action.payload === "asc"
       // ? state.pokemons.sort( (a, b) => {
       //   if (a.name > b.name) return 1;
@@ -123,11 +123,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: sortedArray
       }
-
-    // case 'POST_POKEMON':
-    //   return {
-    //     ...state
-    //   }
 
     case 'POST_POKEMON':
        return {

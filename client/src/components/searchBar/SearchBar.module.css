@@ -2,11 +2,9 @@
     border-radius: 0.8rem 0 0 0.8rem;
     padding: 0.5rem 0rem 0.5rem 1rem;
     width: 350px;
-    
-    font-size: 1rem;
+    font-size: 0.9rem;
     border: 2px solid rgb(255, 255, 255);
-    
-    
+    height: 30px;
 }
 
 .btnSearch {
@@ -15,11 +13,11 @@
     /* color: white; */
     /* font-size: 0.9rem; */
     /* font-weight: bold; */
-    border: none;
+    border: 2px solid rgb(80, 78, 78);
     background-color: rgb(80, 78, 78);
     cursor: pointer;
     transition: all 300ms;
-    height: 39px;
+    height: 30px;
 }
 
 .btnSearch:hover {
@@ -28,7 +26,7 @@
 }
 
 .img {
-    max-width: 28px;
+    max-width: 25px;
     padding: 4px;
 }
 
@@ -36,4 +34,5 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    
 }
