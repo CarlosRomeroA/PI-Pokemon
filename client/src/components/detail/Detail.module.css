@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap');
 
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 20px;
+  height: 120px;
+  margin-bottom: 1rem;
+ }
+
+ .img {
+  max-height: 380px;
+}
+
 /* .nav {
   height: 10vh;
   background-color: #1C1D23;
@@ -41,227 +57,68 @@
   height: 70px;
 } */
 
-.container2 {
-  /* border-radius: 50px 50px 30px 15px; */
-  /* box-shadow: 3px 3px 15px 5px #6FCF97; */
+/* .container2 {
+  border-radius: 50px 50px 30px 15px;
+  box-shadow: 3px 3px 15px 5px #6FCF97;
   display: flex;
-  align-items: center;
-  /* flex-direction: row; */
-  /* flex-wrap: wrap; */
-  /* width: 50%; */
-  /* margin: 0 auto; */
-  /* margin-top: 28px; */
+  align-items: center; 
+  flex-direction: row; 
+  flex-wrap: wrap; 
+  width: 50%; 
+  margin: 0 auto; 
+  margin-top: 28px; 
+} */
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 1100px;
+  margin: 0px auto;
+  margin-bottom: 2.5rem;
+  
 }
 
-.containerInfo {
-  width: 15%;
-  margin-top: 80px;
-  /* height: 450px; */
-   
+.containerInfo1 {
+  width: 0%;
+  margin-top: 0rem;
+  margin-bottom: 2rem;
 }
 
 .containerInfo2 {
-  width: 15%;
-  z-index: 1;
-  height: 450px;
-  margin-top: -80px;
-   
+  width: 0%;
+  margin-top: -5rem;
+  margin-left: -15rem ;
 }
 
-.img {
-  /* display: block; */
-  margin-left: -100px;
-  /* grid-column: x0 / x2; */
-  /* grid-row: y1/y3; */
-  max-width: 450px;
-  
-  z-index: 1;
-  /* animation: fadeIn 1s; */
+.containerInfo3 {
+  width: 35%;
+  margin-top: 0rem;
+  margin-bottom: 1.5rem;
 }
-
-.containerStats {
-  width: 33%;
-  /* height: 450px; */
-  /* display: grid; */
-  /* grid-template-rows: repeat(6, 1fr); */
-  /* align-items: center; */
-  /* border-radius: 50px 50px 30px 15px; */
-  /* margin-top: 50px; */
-}
-
-.containerStats h1 {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1rem;
-  font-weight:lighter;
-  color: white;
-  margin-left: 0px;
-  text-align: left;
-}
-
-.stats .bar .progress {
-  height: 30px;
-  width: 80%;
-  left: 0;
-  background: #f0f0f0;
-  position: relative;
-  transform: scaleX(0);
-  transform-origin: left;
-  border-radius: 10px;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05),
-    0 1px rgba(255, 255, 255, 0.8);
-  animation: animate 1s cubic-bezier(1, 0, 0.5, 1) forwards;
-  margin-left: 0px
-}
-
-@keyframes animate {
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-.bar .progress .hp {
-  height: 104%;
-  position: absolute;
-  left: 0;
-  border-radius: 10px;
-  transform: scaleX(0);
-  transform-origin: left;
-  background: rgb(40, 41, 37);
-  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
-}
-
-.bar .progress .attack {
-  height: 104%;
-  position: absolute;
-  left: 0;
-  border-radius: 10px;
-  transform: scaleX(0);
-  transform-origin: left;
-  background: rgb(40, 41, 37);
-  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
-}
-
-.bar .progress .defense {
-  height: 104%;
-  position: absolute;
-  left: 0;
-  border-radius: 10px;
-  transform: scaleX(0);
-  transform-origin: left;
-  background: rgb(40, 41, 37);
-  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
-}
-
-.bar .progress .speed {
-  height: 104%;
-  position: absolute;
-  left: 0;
-  border-radius: 10px;
-  transform: scaleX(0);
-  transform-origin: left;
-  background: rgb(40, 41, 37);
-  animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
-}
-
-.progress span::before {
-  position: absolute;
-  content: "";
-  top: -10px;
-  right: 0;
-  height: 0;
-  width: 0;
-  border: 7px solid transparent;
-  border-bottom-width: 0px;
-  border-right-width: 0px;
-  border-top-color: #000;
-  opacity: 0;
-  animation: showText2 0.5s 1.5s linear forwards;
-}
-
-.progress span::after {
-  position: absolute;
-  top: -28px;
-  right: 0;
-  font-weight: 500;
-  background: #000;
-  color: #fff;
-  padding: 1px 8px;
-  font-size: 12px;
-  border-radius: 3px;
-  opacity: 0;
-  animation: showText2 0.5s 1.5s linear forwards;
-}
-
-.container2 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 97%;
-  margin: 0 auto;
-  justify-content: space-around;
-}
-
-@keyframes showText2 {
-  100% {
-    opacity: 1;
-  }
-}
-
-.hp::after {
-  content: attr(per);
-}
-
-.attack::after {
-  content: attr(per);
-}
-
-.defense::after {
-  content: attr(per);
-}
-
-.speed::after {
-  content: attr(per);
-}
-
-
-.nav {
-  background-color: #272724;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
-
-.container {
-  width: 1200px;
-
-  margin: 0px auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.2rem;
-}
-
-.logo {
-  padding: 0.5rem;
-  width: 200px;
-  margin-left: -3rem;
-}
-
-
 
 .btnCreatePokemon{
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.5rem;
-  color: rgb(255, 216, 41);
-  font-size: 0.9rem;
-  text-decoration: none;
+  border-radius: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  color: white;
+  font-size: 0.8rem;
   font-weight: bold;
   border: none;
-  background-color: #1e4e9b;
+  background-color: #272724;
   cursor: pointer;
   transition: all 300ms;
+  text-decoration: none;
 }
 
 .btnCreatePokemon:hover {
-  background-color: #0d6815;
+  background-color: #1a1a18;
   color: rgb(168, 167, 165)
 }
+
+
+
+
+
+
+
+

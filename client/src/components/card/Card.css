@@ -45,6 +45,10 @@ body {
   z-index: 9999;
 }
 
+.clash-card:hover {
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+}
+
 .clash-card__image {
   position: relative;
   height: 180px;
@@ -90,6 +94,10 @@ body {
   left: -36px;
 }
 
+.clash-card__image--goblin img:hover {
+  transform: scale(1.1); 
+}
+
 .clash-card__image--wizard {
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg");
 }
@@ -128,10 +136,12 @@ body {
 }
 
 .clash-card__unit-name {
+  
   font-size: 18px;
   color: black;
   font-weight: 900;
   margin-bottom: 5px;
+  text-transform: capitalize
 }
 
 .clash-card__unit-description {
@@ -161,7 +171,9 @@ body {
 }
 
 .clash-card__unit-stats--goblin {
-  background: #82BB30;
+  /* background: #82BB30; */
+  background: #272724;
+
 }
 .clash-card__unit-stats--goblin .one-third {
   border-right: 1px solid #71a32a;
@@ -179,22 +191,29 @@ body {
   font-weight: 700;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
+  padding: 15px 0px 9px 0px;
+  
 }
 .clash-card__unit-stats .one-third {
   width: 100%;
   float: left;
   padding: 5px 15px;
+  
 }
 .clash-card__unit-stats sup {
   position: absolute;
   bottom: 4px;
   font-size: 45%;
   margin-left: 2px;
+  
 }
 .clash-card__unit-stats .stat {
   position: relative;
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 10px;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-around;
 }
 .clash-card__unit-stats .stat-value {
   text-transform: uppercase;

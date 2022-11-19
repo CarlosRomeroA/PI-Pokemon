@@ -1,4 +1,4 @@
-import { orderByNameOrStrengh, filterPokemonsByCreated, filterPokemonsByType} from "../../redux/actions";
+import { orderByNameOrStrengh, filterPokemonsByCreated, filterPokemonsByType, getPokemons} from "../../redux/actions";
 import styles from '../filters/Filters.module.css';
 import { useState, } from "react";
 import { useDispatch, useSelector} from "react-redux";
@@ -7,7 +7,7 @@ import { useDispatch, useSelector} from "react-redux";
 export default function Filters() {
 
 const dispatch = useDispatch()
-const [ currentPage, setCurrentPage ] = useState(1)
+const [currentPage, setCurrentPage] = useState(1)
 const [order, setOrder] = useState('')
 const types = useSelector((state => state.types))
 
@@ -25,6 +25,11 @@ function handleSort(e) {
   function handleFilterByType(e) {
     dispatch(filterPokemonsByType(e.target.value))
 }  
+
+function handleClick(e) {
+    e.preventDefault();
+    dispatch(getPokemons());
+}
 
 return (
     <div className={styles.sectionFilters}>
@@ -46,7 +51,6 @@ return (
             <option value="Api">Originals</option>
         </select>
         </div>
-
         <div className={styles.divFilter}>
         <span>Filter by: </span>
         <select onChange={ e => handleFilterByType(e)} className={styles.select}>
@@ -57,6 +61,9 @@ return (
             ))
             }
         </select>
+        </div>
+        <div className={styles.divFilter}>
+            <button className={styles.btnReload} onClick={e => { handleClick(e) }}>Reload Filters</button>
         </div>
     </div>
 )

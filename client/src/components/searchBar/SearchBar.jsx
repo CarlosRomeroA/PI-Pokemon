@@ -25,7 +25,7 @@ export default function SearchBar() {
         <div className={styles.div}>
             <input 
                 type="text"
-                placeholder="Search Pokemon by name..." 
+                placeholder="Search pokemon by name..." 
                 onChange={(e) => handleInputChange(e)}
                 className={styles.inputSearch}  
             />

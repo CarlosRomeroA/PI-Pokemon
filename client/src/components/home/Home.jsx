@@ -50,14 +50,17 @@ export default function Home() {
                     return (
                         <div>
                             <Link to={"/pokemons/" + c.id}>
-                                <Card name={c.name} image={c.image} id={c.id}/>
+                                <Card name={c.name} image={c.image} id={c.id} types={c.types}/>
                             </Link>
                         </div>
                     );
                 })
             }
             </div>
-            
+            <Paginado
+                pokemonsPerPage={pokemonsPerPage}
+                allPokemons={allPokemons.length}
+                paginado={paginado} />
         </div>
     )
 }

@@ -1,0 +1,21 @@
+.card {
+  width: 400px;
+  height: 200px;
+  border-radius: 60px 0 60px 0;
+  background: #f1f1f3; 
+}
+
+.card__title {
+  text-align: left;
+  padding: 20px 124px;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  border-radius: 60px 0 0;
+  background: rgb(40, 41, 37);
+  display: flex;
+  color: #f1f1f3;
+}
+
+
+
+
