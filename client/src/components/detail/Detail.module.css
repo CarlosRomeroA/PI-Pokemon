@@ -1,73 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap');
 
 .nav {
+  background-color: #272724;
+}
+
+.containerNav {
+  width: 1200px;
+  margin: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 5rem;
 }
 
 .logo {
-  margin-top: 20px;
-  height: 110px;
-  margin-bottom: 1.5rem;
- }
+  padding: 0.5rem;
+  height: 75px;
+}
 
  .img {
-  max-height: 450px;
+  height: 470px;
 }
-
-/* .nav {
-  height: 10vh;
-  background-color: #1C1D23;
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-left: 5%;
-  padding-right: 5%;
-} */
-
-/* .btn {
-  align-content: flex-start;
-  font-size: 3rem;
-  cursor: pointer;
-  outline: none;
-  text-decoration: none;
-  border: none;
-  padding: 16px 32px;
-  color: #fff;
-  font-family: Arial;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: .5px;
-  line-height: 1;
-  border-radius: 8px;
-  background-image: linear-gradient(45deg, #2378c9 10%, #133079 90%);
-  background-position: 90% 0;
-  background-size: 200% 200%;
-  box-shadow: 0 2px 8px -1px #09113f;
-  transition: all 0.5s ease;
-} */
-
-/* .btn:hover {
-  box-shadow: 0 0 px 10px 0 rgba(0, 40, 120, 0);
-  background-position: 0 0;
-}
-.imgLogo {
-  margin-left: 22%;
-  height: 70px;
-} */
-
-/* .container2 {
-  border-radius: 50px 50px 30px 15px;
-  box-shadow: 3px 3px 15px 5px #6FCF97;
-  display: flex;
-  align-items: center; 
-  flex-direction: row; 
-  flex-wrap: wrap; 
-  width: 50%; 
-  margin: 0 auto; 
-  margin-top: 28px; 
-} */
 
 .container {
   display: flex;
@@ -76,13 +29,12 @@
   width: 1100px;
   margin: 0px auto;
   margin-bottom: 3.5rem;
-  
 }
 
 .containerInfo1 {
   width: 0%;
   margin-top: 0rem;
-  margin-bottom: 2.7rem;
+  margin-bottom: 2.9rem;
 }
 
 .containerInfo2 {
@@ -97,24 +49,44 @@
   margin-bottom: 1.5rem;
 }
 
+.containerInfo4 {
+    /* text-align: left; */
+    width: 25%;
+    padding: 8px 0px 8px 0px;
+    font-size: 1.1rem;
+    /* font-weight: lighter; */
+    background: rgb(88, 88, 86);
+    display: flex;
+    color: rgb(253, 255, 248);
+    text-transform: capitalize;
+    justify-content: space-evenly;
+    
+}
+
 .btnCreatePokemon{
   border-radius: 1.5rem;
-  padding: 0.8rem 1.8rem;
+  padding: 0.6rem 1.4rem;
   color: white;
   font-size: 0.8rem;
   font-weight: bold;
   border: none;
-  background-color: #272724;
+  background-color: rgb(80, 78, 78);
   cursor: pointer;
   transition: all 300ms;
   text-decoration: none;
 }
 
 .btnCreatePokemon:hover {
-  background-color: #1a1a18;
+  background-color: rgb(44, 43, 43);
   color: rgb(168, 167, 165)
 }
 
+.btn {
+  display: flex;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 5rem;
+}
 
 
 

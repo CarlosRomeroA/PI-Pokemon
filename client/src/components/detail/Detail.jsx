@@ -20,33 +20,35 @@ export default function Detail (props) {
   return (
     <div>
       <nav className={styles.nav}>
-        <div>
-          <Link to="/home" ><img src={logo} className={styles.logo} alt="logo"/></Link>
+        <div className={styles.containerNav}>
+            <Link to="/home" ><img src={logo} className={styles.logo} alt="logo" /></Link>
+            <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
         </div>
       </nav>
   
-        <div className={styles.container}> {
-          pokemon.length > 0 ?  
-            <>
-              <div className={styles.containerInfo1}>
-                <DetailName/>
-              </div>
+      <div className={styles.container}> {
+        
+        pokemon.length > 0 ?  
+          <>
+            <div className={styles.containerInfo1}>
+              <DetailName/>
+            </div>
 
-              <div className={styles.containerInfo2}>
-                <img src={pokemon[0].image} alt="Image not found" className={styles.img}/> 
-              </div>
-                  
-              <div className={styles.containerInfo3}>
-                <DetailSettings/>
-              </div>
-            </> 
+            <div className={styles.containerInfo2}>
+              <img src={pokemon[0].image} alt="Image not found" className={styles.img}/> 
+            </div>
+                
+            <div className={styles.containerInfo3}>
+              <DetailSettings/>
+            </div>
+            
+          </> 
 
-            :
-            <i></i>
-        }
-        </div>
+          : <i></i>
+      }
+      </div>
 
-     <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
+      
 
     </div>
   )

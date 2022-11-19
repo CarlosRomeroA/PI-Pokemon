@@ -7,15 +7,33 @@
 
 .card__title {
   text-align: left;
-  padding: 20px 0px 20px 50px;
+  padding: 18px 0px 20px 62px;
   font-size: 1.6rem;
   font-weight: lighter;
   border-radius: 60px 0 0;
   background: rgb(40, 41, 37);
   display: flex;
   color: #f1f1f3;
+  text-transform: capitalize;
 }
 
+.card__title2 {
+          /* text-align: left; */
+    padding: 8px 0px 8px 0px;
+    font-size: 1.1rem;
+    /* font-weight: lighter; */
+    background: rgb(88, 88, 86);
+    display: flex;
+    color: rgb(253, 255, 248);
+    text-transform: capitalize;
+    justify-content: space-evenly;
+    /* flex-direction: row; */
+    width: 200px;
+    margin-left: 4rem;
+    margin-top: -2.1rem;
+}
 
-
+.info {
+  color:rgb(40, 41, 37);
+}
 

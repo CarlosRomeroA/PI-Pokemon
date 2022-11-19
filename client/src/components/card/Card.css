@@ -194,10 +194,25 @@ body {
   padding: 15px 0px 9px 0px;
   
 }
+.clash-card__unit-stats2 {
+  color: rgb(61, 58, 58);
+    font-weight: 700;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    padding: 35px 110px 60px 37px;
+    display: flex;
+  
+}
 .clash-card__unit-stats .one-third {
   width: 100%;
   float: left;
   padding: 5px 15px;
+  
+}
+.clash-card__unit-stats2 .one-third {
+  width: 100%;
+  
+  
   
 }
 .clash-card__unit-stats sup {
@@ -212,6 +227,12 @@ body {
   font-size: 22px;
   margin-bottom: 10px;
   text-transform: capitalize;
+  display: flex;
+  justify-content: space-around;
+}
+.clash-card__unit-stats2 .stat {
+  font-size: 22px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-around;
 }
