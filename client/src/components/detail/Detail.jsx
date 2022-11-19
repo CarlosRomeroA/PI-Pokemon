@@ -19,10 +19,9 @@ export default function Detail (props) {
 
   return (
     <div>
-      <nav>
-        <div className={styles.nav}>
-            <Link to="/home" ><img src={logo} alt="logo" className={styles.logo}/></Link>
-            
+      <nav className={styles.nav}>
+        <div>
+          <Link to="/home" ><img src={logo} className={styles.logo} alt="logo"/></Link>
         </div>
       </nav>
   
@@ -33,9 +32,9 @@ export default function Detail (props) {
                 <DetailName/>
               </div>
 
-              {/* <div className={styles.containerInfo2}>
+              <div className={styles.containerInfo2}>
                 <img src={pokemon[0].image} alt="Image not found" className={styles.img}/> 
-              </div> */}
+              </div>
                   
               <div className={styles.containerInfo3}>
                 <DetailSettings/>
@@ -46,8 +45,8 @@ export default function Detail (props) {
             <i></i>
         }
         </div>
-        
-      <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
+
+     <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
 
     </div>
   )
