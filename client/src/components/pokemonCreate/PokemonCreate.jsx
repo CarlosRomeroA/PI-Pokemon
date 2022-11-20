@@ -103,7 +103,6 @@ const CreatePokemon = () => {
         <nav className={styles.nav}>
           <div className={styles.containerNav}>
               <Link to="/home" ><img src={logo} className={styles.logo} alt="logo" /></Link>
-              <SearchBar/>
               <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
           </div>
         </nav>
@@ -114,62 +113,62 @@ const CreatePokemon = () => {
             <form onSubmit={(e) => handleSubmit(e)}>
 
             <div>
-                <label>Name:</label>
-                <input type="text" name="name" value={input.name} onChange={(e) => handleChange(e)} required placeholder="Ingrese un nombre"  />
+                <label>Name</label>
+                <input type="text" name="name" value={input.name} onChange={(e) => handleChange(e)} required placeholder="Enter a name"  />
                 <div className={styles.divError}>{errors.name && (<span>{errors.name}</span>)}</div>
             </div>
 
             <div>
-                <label>Image:</label>
-                <input type="text" name="image" value={input.image} onChange={(e) => handleChange(e)} placeholder="Ingrese url de la imagen"  />
+                <label>Image</label>
+                <input type="text" name="image" value={input.image} onChange={(e) => handleChange(e)} placeholder="Enter image url"  />
                 <div className={styles.divError}>{errors.image && (<span>{errors.image}</span>)}</div>
             </div>
 
             <div>
                 <label>
-                    Life:
+                    Hp
                 </label>
-                <input type="number" name="life" value={input.life} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <input type="number" name="life" value={input.life} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
                 <div className={styles.divError}>{errors.life && (<span>{errors.life}</span>)}</div>
             </div>
 
             <div>
                 <label>
-                    Attack:
+                    Attack
                 </label>
-                <input type="number" name="attack" value={input.attack} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <input type="number" name="attack" value={input.attack} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
                 <div className={styles.divError}>{errors.attack && (<span>{errors.attack}</span>)}</div>
             </div>
 
             <div>
                 <label>
-                    Defense:
+                    Defense
                 </label>
-                <input type="number" name="defense" value={input.defense} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <input type="number" name="defense" value={input.defense} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
                 <div className={styles.divError}>{errors.defense && (<span>{errors.defense}</span>)}</div>
             </div>
 
             <div>
                 <label>
-                    Speed:
+                    Speed
                 </label>
-                <input type="number" name="speed" value={input.speed} onChange={(e) => handleChange(e)} placeholder="Ingrese un número" />
+                <input type="number" name="speed" value={input.speed} onChange={(e) => handleChange(e)} placeholder="Enter a number" />
                 <div className={styles.divError}>{errors.speed && (<span>{errors.speed}</span>)}</div>
             </div>
 
             <div>
                 <label>
-                    Height(m):
+                    Height
                 </label>
-                <input type="number" name="height" value={input.height} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <input type="number" name="height" value={input.height} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
                 <div className={styles.divError}>{errors.height && (<span>{errors.height}</span>)}</div>
             </div>
 
             <div>
                 <label>
-                    Weight(kg):
+                    Weight
                 </label>
-                <input type="number" name="weight" value={input.weight} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <input type="number" name="weight" value={input.weight} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
                 <div className={styles.divError}>{errors.weight && (<span>{errors.weight}</span>)}</div>
             </div>
 
@@ -178,7 +177,7 @@ const CreatePokemon = () => {
                     Types
                 </label>
                 <select onChange={(e) => handleSelected(e)} required>
-                    <option>Selecciona</option>
+                    <option>Select maximum two types</option>
                     {infoTypes && infoTypes.map(el => (
                         <option key={el.id} value={el.name}>{el.name}</option>
                     ))}

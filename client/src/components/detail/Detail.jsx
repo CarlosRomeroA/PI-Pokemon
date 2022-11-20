@@ -19,14 +19,15 @@ export default function Detail (props) {
   let pokemon = useSelector( (state) => state.detail )
 
   return (
-    <div>
+    <div >
             <nav className={styles.nav}>
                 <div className={styles.containerNav}>
                     <Link to="/home" ><img src={logo} className={styles.logo} alt="logo" /></Link>
-                    <SearchBar/>
+                  
                     <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
                 </div>
             </nav>  
+      <div className={styles.containerBody}>      
       <div className={styles.container}> {
         
         pokemon.length > 0 ?  
@@ -49,7 +50,7 @@ export default function Detail (props) {
       }
       </div>
 
-      
+      </div>
 
     </div>
   )

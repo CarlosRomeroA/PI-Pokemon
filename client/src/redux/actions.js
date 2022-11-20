@@ -42,17 +42,6 @@ export function getTypes() {
   }
 }
 
-// export function postPokemon(payload) {
-//   return async function (dispatch) {
-//     const response = await axios.post("http://localhost:3001/pokemons", payload);
-//     console.log(response)
-//     return dispatch({
-//       type: 'POST_POKEMON',
-//       payload: response.data
-//     })
-//   }
-// }
-
 export function postPokemon(payload){
   return async function(dispatch){
       const respuesta = await axios.post("http://localhost:3001/pokemons", payload);
@@ -86,9 +75,9 @@ export function filterPokemonsByType(payload) {
   }
 }
 
-export function orderByNameOrStrengh (payload) {
+export function orderByName(payload) {
   return {
-    type: 'ORDER_BY_NAME_OR_STRENGH',
+    type: 'ORDER_BY_NAME',
     payload
   }
 }

@@ -13,7 +13,7 @@ body {
 }
 
 .cardspokemon{
-  margin-top: 70px;
+  margin-top: 0px;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -28,7 +28,8 @@ body {
   margin: auto;
   width: 330px;
   text-align: center;
-  margin-bottom: 150px;
+  margin-top: 110px;
+  margin-bottom: 40px;
 }
 
 
@@ -42,7 +43,11 @@ body {
   position: relative;
   text-align: center;
   box-shadow: -1px 15px 30px -12px black;
-  z-index: 9999;
+  z-index: 40;
+}
+
+.clash-card:hover {
+  box-shadow: 0 0 20px rgb(255, 255, 255);
 }
 
 .clash-card2 {
@@ -53,13 +58,14 @@ body {
     position: relative;
     text-align: center;
     box-shadow: -1px 15px 30px -12px black;
-    z-index: 9999;
+    z-index: 40;
     margin-top: 3rem;
 }
 
-.clash-card:hover {
+.clash-card2:hover {
   box-shadow: 0 0 20px rgb(255, 255, 255);
 }
+
 
 .clash-card__image {
   position: relative;

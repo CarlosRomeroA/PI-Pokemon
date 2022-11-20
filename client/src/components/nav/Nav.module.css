@@ -3,10 +3,12 @@
 }
 
 .container {
-    width: 100%x;
+    width: 90%;
+    margin: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    
     margin-bottom: 1.2rem;
 }
 

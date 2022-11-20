@@ -1,24 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, filterPokemonsByCreated, getTypes, filterPokemonsByType, orderByName, orderByNameOrStrengh, } from "../../redux/actions";
+import { getPokemons, getTypes, filterPokemonsByType, orderByName, filterPokemonsByCreated} from "../../redux/actions";
 import { Link } from "react-router-dom";
 import Card from "../card/Card";
 import Paginado from "../pagination/Pagination";
-import "../card/Card.css"
 import Nav from "../nav/Nav";
-import Filters from '../filters/Filters';
+import styles from "../home/Home.module.css"
 
 export default function Home() {
     
     const dispatch = useDispatch()
     const allPokemons = useSelector(state => state.pokemons)
-    const types = useSelector(state => state.types)
-    const [order, setOrder] = useState('')
     const [ currentPage, setCurrentPage ] = useState(1)
     const [ pokemonsPerPage, setPokemonsPerPage ] = useState(12)
     const indexOfLastPokemon = currentPage * pokemonsPerPage
     const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
     const currentPokemons = allPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon)
+    const [order, setOrder] = useState(' ');
+    const types = useSelector(state => state.types);
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -29,20 +28,71 @@ export default function Home() {
         dispatch(getTypes());
     }, [dispatch]);
 
-    // function handleClick(e) {
-    //     e.preventDefault();
-    //     dispatch(getPokemons());
-    // };
+    function handleFilterPokemonByCreated(e) {
+        dispatch(filterPokemonsByCreated(e.target.value))
+    }
+
+    function handleFilterByType(e) {
+        dispatch(filterPokemonsByType(e.target.value))
+    }  
+    
+    function handleSort(e) {
+        e.preventDefault();
+        dispatch(orderByName(e.target.value));
+        setCurrentPage(1);
+        setOrder(`Ordenado ${e.target.value}`)
+    }
+
+    function handleClick(e) {
+        e.preventDefault();
+        dispatch(getPokemons());
+    }
 
     return (
         <div>
             <Nav/>
             
-            <Filters/>
-            <Paginado
-                pokemonsPerPage={pokemonsPerPage}
-                allPokemons={allPokemons.length}
-                paginado={paginado} />
+            <div className={styles.sectionFilters}>
+                
+                <div className={styles.divFilter}>
+                    <span>Order by:</span>
+                    <select onChange={e => handleSort(e)} className={styles.select}>
+                        <option value="normal">Normal</option>
+                        <option value="asc">A - Z</option>
+                        <option value="desc">Z - A</option>
+                        <option value="atkH">Highest Attack</option>
+                        <option value="atkL">Lowest Attack</option>
+                    </select>
+                </div>
+
+                <div className={styles.divFilter}>
+                    <span>View: </span>
+                    <select onChange={e => handleFilterPokemonByCreated(e)} className={styles.select}>
+                        <option value="All">All Pokemons</option>
+                        <option value="Created">Created</option>
+                        <option value="Api">Originals</option>
+                    </select>
+                </div>
+                
+                <div className={styles.divFilter}>
+                    <span>Filter by: </span>
+                    <select onChange={ e => handleFilterByType(e)} className={styles.select}>
+                        <option value="All">All Types</option>
+                        {
+                        types?.map( type => (
+                            <option value={type.name} key={type.name}>{type.name}</option>
+                        ))
+                        }
+                    </select>
+                </div>
+
+                <div className={styles.divFilter}>
+                    <button className={styles.btnReload} onClick={e => { handleClick(e) }}>Reload Filters</button>
+                </div>
+                
+            </div>
+
+            {/* <Paginado pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginado={paginado} /> */}
      
             <div className="cardspokemon">
             {
@@ -57,10 +107,8 @@ export default function Home() {
                 })
             }
             </div>
-            <Paginado
-                pokemonsPerPage={pokemonsPerPage}
-                allPokemons={allPokemons.length}
-                paginado={paginado} />
+
+            <Paginado pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginado={paginado} />
         </div>
     )
 }
