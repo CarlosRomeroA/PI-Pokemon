@@ -1,183 +1,226 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { getTypes, postPokemon } from '../../redux/actions';
+import styles from "../pokemonCreate/PokemonCreate.module.css";
+import { Link } from 'react-router-dom';
+import logo from '../../images/logo.png';
+import SearchBar from '../searchBar/SearchBar';
 
-import { Link, useHistory } from "react-router-dom";
-import { getTypes, postPokemon } from "../../redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import Nav from "../nav/Nav";
+function validate(input) {
+  let errors = {};
+  const pattern = new RegExp('^[A-Z]+$', 'i');
 
-// function validate(input) {
-//   let errors = {};
-//   if (!input.name || input.name > 20) errors.name = "Se requiere un nombre entre 1 y 20 caracteres";
-//   else if (!input.types.length || input.types.length < 0) errors.types = "Se requieren types, max 2";
-//   else if (!input.hp || input.hp < 1 || input.hp > 1000) errors.hp = "Se requiere HP entre 1 y 1000";
-//   else if (!input.attack || input.attack < 1 || input.attack > 1000)
-//     errors.attack = "Se requiere attack entre 1 y 1000";
-//   else if (!input.defense || input.defense < 1 || input.defense > 1000)
-//     errors.defense = "Se requiere defense entre 1 y 1000";
-//   else if (!input.speed || input.speed < 1 || input.speed > 1000) errors.speed = "Se requiere speed entre 1 y 1000";
-//   else if (!input.height || input.height < 1 || input.height > 1000)
-//     errors.height = "Se requiere height entre 1 y 1000";
-//   else if (!input.weight || input.weight < 1 || input.weight > 1000)
-//     errors.weight = "Se requiere weight entre 1 y 1000";
-//   return errors;
-// }
-
-function PokemonCreate() {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const types = useSelector((state) => state.types)
-  //const [errors, setErrors] = useState({ "": "" });
-
-  const [input, setInput] = useState({
-    name: "",
-    image: "",
-    types: [],
-    hp: "",
-    attack: "",
-    defense: "",
-    speed: "",
-    height: "",
-    weight: ""
-  });
-
-  useEffect(() => {
-    dispatch(getTypes())
-  }, [dispatch])
-
-  function handleChange(e) {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value
-    });
-    // setErrors(
-    //   validate({
-    //     ...input,
-    //     [e.target.name]: e.target.value,
-    //   })
-    // );
+  if (!input.name) {
+      errors.name = 'Este campo es obligatorio';
+  } else if (!pattern.test(input.name)) {
+      errors.name = 'No se aceptan números'
   }
-
-  function handleSelect(e) {
-    setInput({
-      ...input,
-      types: [...input.types, e.target.value]
-    });
-    // setErrors(
-    //   validate({
-    //     ...input,
-    //     types: [...input.types, e.target.value],
-    //   })
-    // );
+/*else if(input.image===''){
+  errors.image="imagen obligatoria"
+}*/else if (input.life <= 0 || input.life > 100) {
+      errors.life = "Ingresa un número valido 1 - 100"
+  } else if (input.attack <= 0 || input.attack > 100) {
+      errors.attack = "Ingresa un número valido 1 - 100"
+  } else if (input.defense <= 0 || input.defense > 100) {
+      errors.defense = "Ingresa un número valido 1 - 100"
+  } else if (input.speed <= 0 || input.speed > 100) {
+      errors.speed = "Ingresa un número valido 1 - 100"
+  } else if (input.height <= 0 || input.height > 100) {
+      errors.height = "Ingresa un número valido 1 - 100"
+  } else if (input.weight <= 0 || input.weight > 100) {
+      errors.weight = "Ingresa un número valido 1 - 100"
+  } else if(input.types.length<1){
+      errors.types = "Ingresa un tipo o más"
   }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    //if (Object.values(errors).length === 0) {
-      //console.log("submit");
-      dispatch(postPokemon(input))
-      alert("Pokemon Created!!!")
-      setInput({
-        name: "",
-        image: "",
-        types: [],
-        hp: "",
-        attack: "",
-        defense: "",
-        speed: "",
-        height: "",
-        weight: ""
-      });
-      history.push("/home")
-    } 
-  
-
-  function handleDelete(el) {
-    console.log(el)
-    setInput({
-      ...input,
-      types: input.types.filter((a) => a !== el)
-    });
-  }
-
-
-
-  // console.log(errors, "soy el error");
-  // console.log(input.name);
-
-  return (
-    <div>
-      <Nav/>
-      <Link to="/home">
-        <button>Volver</button>
-      </Link>
-      <h2>Crea tu Pokemon</h2>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>Name: </label>
-          <input type="text" value={input.name} name="name" onChange={(e) => handleChange(e)} />
-        </div>
-        {/* <div>{<p>{errors.name}</p>}</div> */}
-        <div>
-          <label>Image: </label>
-          <input type="text" value={input.image} name="image" onChange={(e) => handleChange(e)} />
-        </div>
-        <div>
-          <label>Types: </label>
-          <select onChange={handleSelect}>
-            {types.map((e) => (
-              <option value={e.name}>
-                {e.name}
-              </option>
-            ))}
-          </select>
-          <ul>
-            {/* <li>{input.types.map((e) => e + " ")}</li> */}
-            {input.types.map((el) => (
-              <div>
-                <p>{el}</p>
-                <input type="button" value="x" onClick={() => handleDelete(el)} />
-              </div>
-            ))}
-          </ul>
-        </div>
-
-        {/* <div>{<p>{errors.types}</p>}</div> */}
-        <div>
-          <label>Hp: </label>
-          <input type="text" value={input.hp} name="hp" onChange={(e) => handleChange(e)} />
-        </div>
-        {/* <div>{<p>{errors.hp}</p>}</div> */}
-        <div>
-          <label>Attack: </label>
-          <input type="text" value={input.attack} name="attack" onChange={(e) => handleChange(e)} />
-        </div>
-        {/* <div>{<p>{errors.attack}</p>}</div> */}
-        <div>
-          <label>Defense: </label>
-          <input type="text" value={input.defense} name="defense" onChange={(e) => handleChange(e)} />
-        </div>
-        {/* <div>{<p>{errors.defense}</p>}</div> */}
-        <div>
-          <label>Speed: </label>
-          <input type="text" value={input.speed} name="speed" onChange={(e) => handleChange(e)} />
-        </div>
-        {/* <div>{<p>{errors.speed}</p>}</div> */}
-        <div>
-          <label>Height: </label>
-          <input type="text" value={input.height} name="height" onChange={(e) => handleChange(e)} />
-        </div>
-        {/* <div>{<p>{errors.height}</p>}</div> */}
-        <div>
-          <label>Weight: </label>
-          <input type="text" value={input.weight} name="weight" onChange={(e) => handleChange(e)} />
-        </div>
-        {/* <div>{<p>{errors.weight}</p>}</div> */}
-        <button>
-          Crear
-        </button>
-      </form>
-    </div>
-  );
+  return errors;
 }
 
-export default PokemonCreate;
+const CreatePokemon = () => {
+  const infoTypes = useSelector(state => state.types);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [input, setInput] = useState({
+      name: '',
+      image: '',
+      life: '',
+      attack: '',
+      defense: '',
+      speed: '',
+      height: '',
+      weight: '',
+      types:[]
+  });
+
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+      dispatch(getTypes())
+  }, [])
+
+  const handleChange = (e) => {
+      setInput({
+          ...input,
+          [e.target.name]: e.target.value
+      })
+
+      setErrors(validate({
+          ...input,
+          [e.target.name]: e.target.value
+      }))
+  }
+
+  const handleSelected = (e) => {
+      setInput({
+          ...input,
+          types: [...new Set([...input.types, e.target.value])]//input.types.includes(e.target.value) ? input.types : [...input.types, e.target.value]
+      })
+
+      setErrors(validate({
+          ...input,
+          types: [...input.types, e.target.value]
+      }))
+  }
+
+  function deleteType(type){
+      setInput({
+          ...input,
+          types:input.types.filter(el => el !== type)
+      })
+  }
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      dispatch(postPokemon(input))
+      history.push('/home')
+  }
+
+  const urlImgDefect = "https://i.pinimg.com/originals/95/d5/cd/95d5cded00f3a3e8a98fb1eed568aa9f.png";
+
+    return (
+    <>
+        <nav className={styles.nav}>
+          <div className={styles.containerNav}>
+              <Link to="/home" ><img src={logo} className={styles.logo} alt="logo" /></Link>
+              <SearchBar/>
+              <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
+          </div>
+        </nav>
+
+        <div className={styles.container}>
+
+            <div className={styles.divFomr}>
+            <form onSubmit={(e) => handleSubmit(e)}>
+
+            <div>
+                <label>Name:</label>
+                <input type="text" name="name" value={input.name} onChange={(e) => handleChange(e)} required placeholder="Ingrese un nombre"  />
+                <div className={styles.divError}>{errors.name && (<span>{errors.name}</span>)}</div>
+            </div>
+
+            <div>
+                <label>Image:</label>
+                <input type="text" name="image" value={input.image} onChange={(e) => handleChange(e)} placeholder="Ingrese url de la imagen"  />
+                <div className={styles.divError}>{errors.image && (<span>{errors.image}</span>)}</div>
+            </div>
+
+            <div>
+                <label>
+                    Life:
+                </label>
+                <input type="number" name="life" value={input.life} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <div className={styles.divError}>{errors.life && (<span>{errors.life}</span>)}</div>
+            </div>
+
+            <div>
+                <label>
+                    Attack:
+                </label>
+                <input type="number" name="attack" value={input.attack} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <div className={styles.divError}>{errors.attack && (<span>{errors.attack}</span>)}</div>
+            </div>
+
+            <div>
+                <label>
+                    Defense:
+                </label>
+                <input type="number" name="defense" value={input.defense} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <div className={styles.divError}>{errors.defense && (<span>{errors.defense}</span>)}</div>
+            </div>
+
+            <div>
+                <label>
+                    Speed:
+                </label>
+                <input type="number" name="speed" value={input.speed} onChange={(e) => handleChange(e)} placeholder="Ingrese un número" />
+                <div className={styles.divError}>{errors.speed && (<span>{errors.speed}</span>)}</div>
+            </div>
+
+            <div>
+                <label>
+                    Height(m):
+                </label>
+                <input type="number" name="height" value={input.height} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <div className={styles.divError}>{errors.height && (<span>{errors.height}</span>)}</div>
+            </div>
+
+            <div>
+                <label>
+                    Weight(kg):
+                </label>
+                <input type="number" name="weight" value={input.weight} onChange={(e) => handleChange(e)} placeholder="Ingrese un número"  />
+                <div className={styles.divError}>{errors.weight && (<span>{errors.weight}</span>)}</div>
+            </div>
+
+            <div>
+                <label>
+                    Types
+                </label>
+                <select onChange={(e) => handleSelected(e)} required>
+                    <option>Selecciona</option>
+                    {infoTypes && infoTypes.map(el => (
+                        <option key={el.id} value={el.name}>{el.name}</option>
+                    ))}
+                </select>
+                <div className={styles.divError}>{errors.types && (<span>{errors.types}</span>)}</div>
+            </div>
+
+            <div>
+                <input className={styles.bntSubmit} disabled={input.name && input.life && input.attack && input.defense && input.speed && input.height && input.weight && input.types.length > 0 ? false : true} type="submit" value="Create pokemon" />
+            </div>
+
+            </form>
+            </div>
+
+            <div class="clash-card2 goblin">
+
+                <div class="clash-card__image clash-card__image--goblin">
+                    <img src={input.image ? input.image : urlImgDefect} alt={input.name}/>
+                </div>
+
+                <div class="clash-card__unit-name">
+                    <h2>{input.name ? input.name : "name"}</h2> 
+                </div>
+
+                 <div class="clash-card__unit-stats clash-card__unit-stats--goblin clearfix">
+                    <div class="one-third no-border">
+                        <div class="stat">
+                            { input.types.length > 0
+                                ? input.types.map(el => (
+                                    <span class="stat">
+                                        {el}<button className={styles.btnDeleteType} onClick={() => deleteType(el)}>x</button>
+                                    </span>
+                                    ))
+                                : <span class="stat">Types</span>
+                            }
+                         </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </>
+    )
+}
+
+export default CreatePokemon;

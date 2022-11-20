@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@1&display=swap');
 
 .nav {
-  background-color: #272724;
+  background-color: #303030;
+  margin-bottom: 6rem;
 }
 
 .containerNav {
-  width: 1200px;
-  margin: auto;
+  width: 100%x;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 1.2rem;
 }
 
 .logo {
@@ -70,23 +70,19 @@
   font-size: 0.8rem;
   font-weight: bold;
   border: none;
-  background-color: rgb(80, 78, 78);
+  background-color: #505050;
   cursor: pointer;
   transition: all 300ms;
   text-decoration: none;
+  width: 12rem;
 }
 
 .btnCreatePokemon:hover {
-  background-color: rgb(44, 43, 43);
+  background-color: #404040;
   color: rgb(168, 167, 165)
 }
 
-.btn {
-  display: flex;
-  margin-top: 2rem;
-  margin-left: 2rem;
-  margin-bottom: 5rem;
-}
+
 
 
 

@@ -1,0 +1,178 @@
+.nav {
+    background-color: #303030;
+}
+
+.containerNav {
+    width: 100%x;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+
+.logo {
+    padding: 0.5rem;
+    height: 75px;
+}
+
+.btnCreatePokemon{
+    border-radius: 1.5rem;
+    padding: 0.6rem 1.4rem;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: none;
+    background-color: #505050;
+    cursor: pointer;
+    transition: all 300ms;
+    text-decoration: none;
+    width: 12rem;
+}
+
+.btnCreatePokemon:hover {
+    background-color: #404040;
+    color: rgb(168, 167, 165)
+}
+
+.container{
+    display: flex;
+    justify-content:space-evenly;
+    background-color: rgba(0, 0, 0, 0.425);
+    border-radius: 50px;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+}
+
+.divFomr{
+    border-radius: 10px;
+    padding:1.6rem 0px;
+    width: 30rem;
+}
+
+.divFomr form div{
+    display: flex;
+    width: 90%;
+    margin:0px auto;
+    justify-content:space-between;
+    margin-bottom: 0.1rem;
+    margin-top: 0.1rem;
+    flex-wrap: wrap;
+}
+
+.divFomr form div label{
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: white;
+    background-color: #303030;
+    width: 116px;
+    height: 25px;
+    border-radius: 15px 0px 0px 15px;
+    padding: 2px;
+}
+
+.divError{
+height: 20px;
+color:rgb(255, 238, 0);
+
+}
+
+.divError span{
+   text-align: center;
+   margin-left: 28%;
+   font-size: 0.9rem; 
+}
+
+.divFomr form div input{
+    padding-left: 1rem;
+    width: 73%;
+}
+
+.divFomr form div input, select{
+    height: 25px;
+    border:none;
+    border-radius: 0px 15px 15px 0px;
+    padding-left: 0.9rem;
+    
+}
+
+.divFomr form div select{
+    
+    width: 73%;
+    border-radius: 0px 15px 15px 0px;
+}
+
+.bntSubmit[disabled]{
+ background-color: #303030;
+ cursor:no-drop;
+ color:#bebebe
+}
+
+.bntSubmit{
+    background-color:#404040;
+    color:white;
+    width: 200px !important;
+    margin: auto;
+    height: 35px !important;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 300ms;
+    border-radius: 15px !important;
+}
+
+.bntSubmit:hover:not([disabled]){
+    background-color: #303030;
+    color:rgb(255, 255, 255)
+}
+
+.divTypes{
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content:space-around; */
+    /* width: 100% !important; */
+}
+.divTypes .divType{
+    /* display: flex; */
+    /* justify-items: center; */
+    /* justify-content: center; */
+    /* width: 30%; */
+    height: 30px;
+    color:#282929;
+    /* font-size: 1.1rem; */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btnDeleteType{
+    background-color: brown;
+    color:white;
+    border:none;
+    cursor:pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin-left: 0.3rem;
+}
+
+.btnDeleteType:hover{
+ background-color: rgb(107, 16, 16);
+ color:azure
+}
+
+.respuesta{
+   background-color: green;
+   margin:1.5rem 0px;
+   border-radius: 5px;
+   padding: 0.5rem 0px; 
+   color:white;
+   font-weight: bold;
+   font-size: 1.5rem;
+}
+
+.displayTypes {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 1rem;
+    
+}

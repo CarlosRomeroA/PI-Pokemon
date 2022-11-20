@@ -6,6 +6,7 @@ import styles from "../detail/Detail.module.css";
 import DetailName from "../detail/DetailName";
 import logo from '../../images/logo.png';
 import DetailSettings from '../detail/DetailSettings'
+import SearchBar from "../searchBar/SearchBar";
 
 export default function Detail (props) {
   console.log(props)
@@ -19,13 +20,13 @@ export default function Detail (props) {
 
   return (
     <div>
-      <nav className={styles.nav}>
-        <div className={styles.containerNav}>
-            <Link to="/home" ><img src={logo} className={styles.logo} alt="logo" /></Link>
-            <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
-        </div>
-      </nav>
-  
+            <nav className={styles.nav}>
+                <div className={styles.containerNav}>
+                    <Link to="/home" ><img src={logo} className={styles.logo} alt="logo" /></Link>
+                    <SearchBar/>
+                    <Link to="/home" className={styles.btnCreatePokemon}>BACK</Link>
+                </div>
+            </nav>  
       <div className={styles.container}> {
         
         pokemon.length > 0 ?  

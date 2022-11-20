@@ -45,6 +45,18 @@ body {
   z-index: 9999;
 }
 
+.clash-card2 {
+    background: white;
+    width: 220px;
+    display: inline-block;
+    border-radius: 19px;
+    position: relative;
+    text-align: center;
+    box-shadow: -1px 15px 30px -12px black;
+    z-index: 9999;
+    margin-top: 3rem;
+}
+
 .clash-card:hover {
   box-shadow: 0 0 20px rgb(255, 255, 255);
 }
@@ -102,10 +114,10 @@ body {
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/wizard-bg.jpg");
 }
 .clash-card__image--wizard img {
-  width: 345px;
+  width: 300px;
   position: absolute;
-  top: -28px;
-  left: -10px;
+  top: -100px;
+  left: -36px;
 }
 
 .clash-card__level {
@@ -180,7 +192,7 @@ body {
 }
 
 .clash-card__unit-stats--wizard {
-  background: #4FACFF;
+  background: #303030;
 }
 .clash-card__unit-stats--wizard .one-third {
   border-right: 1px solid #309eff;
@@ -195,7 +207,7 @@ body {
   
 }
 .clash-card__unit-stats2 {
-  color: rgb(61, 58, 58);
+      color: rgb(61, 58, 58);
     font-weight: 700;
     border-bottom-left-radius: 14px;
     border-bottom-right-radius: 14px;
