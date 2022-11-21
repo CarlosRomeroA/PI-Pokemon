@@ -18,7 +18,32 @@
     margin-right: 0.7rem;
     font-size: 0.9rem;
 }
-
+.loading{
+    margin-top: 90px;
+    margin-bottom: 250px;
+    display: flex;
+    flex-direction: column;
+}
+.loading span{
+    margin-top:25x;
+    margin-left: -35px;
+    font-size: 25px;
+    color:#ffffff;
+    font-weight: 500;
+}
+.loading2{
+    margin-top: 90px;
+    margin-bottom: 250px;
+    display: flex;
+    flex-direction: column;
+}
+.loading2 h1{
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 35px;
+    color:#ffffff;
+    font-weight: 500;
+}
 .select{
     background-color: #505050;
     color: #ffffff;

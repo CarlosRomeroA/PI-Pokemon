@@ -117,7 +117,10 @@ const CreatePokemon = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!errors) {
+    let validateReturn = validate(input);
+    let size = Object.keys(validateReturn)
+    console.log(size);
+    if ( size.length === 0) {
         dispatch(postPokemon(input))
         alert("Pokemon created!")
         setInput({
@@ -134,9 +137,11 @@ const CreatePokemon = () => {
         history.push('/home')
     }
     else {
-        alert("Please fill all the fields correctly")
-    }      
-
+        alert("Please fill all the fields correctly!")
+    }
+        
+        
+        
   }
 
   const urlImgDefect = "https://i.pinimg.com/originals/95/d5/cd/95d5cded00f3a3e8a98fb1eed568aa9f.png";

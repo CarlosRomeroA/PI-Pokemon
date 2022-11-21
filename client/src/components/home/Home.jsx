@@ -9,7 +9,7 @@ import styles from "../home/Home.module.css"
 
 export default function Home() {
     
-    const dispatch = useDispatch()
+    
     const allPokemons = useSelector(state => state.pokemons)
     const [ currentPage, setCurrentPage ] = useState(1)
     const [ pokemonsPerPage, setPokemonsPerPage ] = useState(12)
@@ -22,11 +22,17 @@ export default function Home() {
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
+    
+   let dispatch = useDispatch();
 
-    useEffect( () => {
-        dispatch(getPokemons());
-        dispatch(getTypes());
-    }, [dispatch]);
+    useEffect(() => {
+    dispatch(getTypes());
+    if(!allPokemons.length)dispatch(getPokemons());
+    }, []);
+    
+    useEffect(() => {
+        setCurrentPage(1);
+      }, [allPokemons.length, setCurrentPage]);
 
     function handleFilterPokemonByCreated(e) {
         dispatch(filterPokemonsByCreated(e.target.value))
@@ -92,8 +98,12 @@ export default function Home() {
                 
             </div>
 
+            {/* <Paginado pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginado={paginado} /> */}
+     
             <div className="cardspokemon">
             {
+                 currentPokemons.length ?
+                 typeof currentPokemons[0] === 'object' ?
                 currentPokemons?.map((c) => {
                     return (
                         <div>
@@ -102,8 +112,18 @@ export default function Home() {
                             </Link>
                         </div>
                     );
-                })
-            }
+                }) :
+                <div className={styles.loading}>
+                <img src='https://media.tenor.com/cg3uVszc7IsAAAAi/pikachu-nope.gif'alt="Pokemon not found" width="300px" />
+                <span>Pokemon Type not found!</span>
+              </div>
+            :
+            <div className={styles.loading2}>
+              <h1>Loading...</h1>
+              <img src="https://thumbs.gfycat.com/IdealPeacefulAmericanbittern-size_restricted.gif" alt="Loading.."width='300px' />
+            </div>
+        }
+            
             </div>
 
             <Paginado pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginado={paginado} />

@@ -46,12 +46,15 @@ export default function Detail (props) {
             
           </> 
 
-          : <i></i>
-      }
-      </div>
-
+          : <div className={styles.loading2}>
+          <h1>Loading...</h1>
+          <img src="https://thumbs.gfycat.com/IdealPeacefulAmericanbittern-size_restricted.gif" alt="Loading.."width='300px' />
+          </div>
+            }
       </div>
 
     </div>
-  )
+
+</div>
+)
 }
