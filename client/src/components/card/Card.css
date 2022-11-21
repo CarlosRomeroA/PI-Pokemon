@@ -247,6 +247,7 @@ body {
   text-transform: capitalize;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .clash-card__unit-stats2 .stat {
   font-size: 22px;

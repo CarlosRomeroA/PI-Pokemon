@@ -121,7 +121,7 @@ router.post('/pokemons', async(req, res) => {
         speed,
         weight,
         height,
-        image: image ? image : "https://i.pinimg.com/originals/6b/52/bc/6b52bcbea6969ef1965dd775e424fc53.gif"
+        image: image ? image : "https://i.pinimg.com/originals/95/d5/cd/95d5cded00f3a3e8a98fb1eed568aa9f.png"
     })
 
     let typedb = await Type.findAll({

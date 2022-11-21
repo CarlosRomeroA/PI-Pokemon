@@ -6,35 +6,60 @@ import { getTypes, postPokemon } from '../../redux/actions';
 import styles from "../pokemonCreate/PokemonCreate.module.css";
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
-import SearchBar from '../searchBar/SearchBar';
 
 function validate(input) {
   let errors = {};
   const pattern = new RegExp('^[A-Z]+$', 'i');
 
-  if (!input.name) {
-      errors.name = 'Este campo es obligatorio';
-  } else if (!pattern.test(input.name)) {
-      errors.name = 'No se aceptan números'
-  }
-/*else if(input.image===''){
-  errors.image="imagen obligatoria"
-}*/else if (input.life <= 0 || input.life > 100) {
-      errors.life = "Ingresa un número valido 1 - 100"
-  } else if (input.attack <= 0 || input.attack > 100) {
-      errors.attack = "Ingresa un número valido 1 - 100"
-  } else if (input.defense <= 0 || input.defense > 100) {
-      errors.defense = "Ingresa un número valido 1 - 100"
-  } else if (input.speed <= 0 || input.speed > 100) {
-      errors.speed = "Ingresa un número valido 1 - 100"
-  } else if (input.height <= 0 || input.height > 100) {
-      errors.height = "Ingresa un número valido 1 - 100"
-  } else if (input.weight <= 0 || input.weight > 100) {
-      errors.weight = "Ingresa un número valido 1 - 100"
-  } else if(input.types.length<1){
-      errors.types = "Ingresa un tipo o más"
-  }
-  return errors;
+    if (!input.name || !pattern.test(input.name)) {
+        !input.name 
+        ? errors.name = '* This field is required!'
+        : errors.name = 'Character not allowed!'
+    } 
+
+    else if (!input.life || (input.life <= 0 || input.life > 100)) {
+        !input.life
+        ? errors.life = '* This field is required!'
+        : errors.life = "Number out of range!"
+    } 
+
+    else if (!input.attack || (input.attack <= 0 || input.attack > 100)) {
+        !input.attack
+        ? errors.attack = '* This field is required!'
+        : errors.attack = "Number out of range!"
+    } 
+    
+    else if (!input.defense || (input.defense <= 0 || input.defense > 100)) {
+        !input.defense
+        ? errors.defense = '* This field is required!'
+        : errors.defense = "Number out of range!"
+    }
+
+    else if (!input.speed || (input.speed <= 0 || input.speed > 100)) {
+        !input.speed
+        ? errors.speed = '* This field is required!'
+        : errors.speed = "Number out of range!"
+    }
+
+    else if (!input.height || (input.height <= 0 || input.height > 100)) {
+        !input.height
+        ? errors.height = '* This field is required!'
+        : errors.height = "Number out of range!"
+    }
+
+    else if (!input.weight || (input.weight <= 0 || input.weight > 100)) {
+        !input.weight
+        ? errors.weight = '* This field is required!'
+        : errors.weight = "Number out of range!"
+    }
+    
+    else if (input.types.length < 1 || input.types.length > 2) {
+        input.types.length < 1
+        ? errors.types = "* This field is required!"
+        : errors.types = "You cannot choose more than 2 types!"
+    } 
+    
+    return errors;
 }
 
 const CreatePokemon = () => {
@@ -74,7 +99,7 @@ const CreatePokemon = () => {
   const handleSelected = (e) => {
       setInput({
           ...input,
-          types: [...new Set([...input.types, e.target.value])]//input.types.includes(e.target.value) ? input.types : [...input.types, e.target.value]
+          types: [...input.types, e.target.value]
       })
 
       setErrors(validate({
@@ -90,10 +115,28 @@ const CreatePokemon = () => {
       })
   }
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      dispatch(postPokemon(input))
-      history.push('/home')
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!errors) {
+        dispatch(postPokemon(input))
+        alert("Pokemon created!")
+        setInput({
+        name: '',
+        hp: '',
+        attack: '',
+        defense: '',
+        speed: '',
+        weight: '',
+        height: '',
+        img: '',
+        types: [],
+        })
+        history.push('/home')
+    }
+    else {
+        alert("Please fill all the fields correctly")
+    }      
+
   }
 
   const urlImgDefect = "https://i.pinimg.com/originals/95/d5/cd/95d5cded00f3a3e8a98fb1eed568aa9f.png";
@@ -114,7 +157,7 @@ const CreatePokemon = () => {
 
             <div>
                 <label>Name</label>
-                <input type="text" name="name" value={input.name} onChange={(e) => handleChange(e)} required placeholder="Enter a name"  />
+                <input type="text" name="name" value={input.name} onChange={(e) => handleChange(e)} placeholder="Enter a name"  />
                 <div className={styles.divError}>{errors.name && (<span>{errors.name}</span>)}</div>
             </div>
 
@@ -128,7 +171,7 @@ const CreatePokemon = () => {
                 <label>
                     Hp
                 </label>
-                <input type="number" name="life" value={input.life} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
+                <input type="number" name="life" value={input.life} onChange={(e) => handleChange(e)} placeholder="Enter a number between 1 - 100"  />
                 <div className={styles.divError}>{errors.life && (<span>{errors.life}</span>)}</div>
             </div>
 
@@ -136,7 +179,7 @@ const CreatePokemon = () => {
                 <label>
                     Attack
                 </label>
-                <input type="number" name="attack" value={input.attack} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
+                <input type="number" name="attack" value={input.attack} onChange={(e) => handleChange(e)} placeholder="Enter a number between 1 - 100"  />
                 <div className={styles.divError}>{errors.attack && (<span>{errors.attack}</span>)}</div>
             </div>
 
@@ -144,7 +187,7 @@ const CreatePokemon = () => {
                 <label>
                     Defense
                 </label>
-                <input type="number" name="defense" value={input.defense} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
+                <input type="number" name="defense" value={input.defense} onChange={(e) => handleChange(e)} placeholder="Enter a number between 1 - 100"  />
                 <div className={styles.divError}>{errors.defense && (<span>{errors.defense}</span>)}</div>
             </div>
 
@@ -152,7 +195,7 @@ const CreatePokemon = () => {
                 <label>
                     Speed
                 </label>
-                <input type="number" name="speed" value={input.speed} onChange={(e) => handleChange(e)} placeholder="Enter a number" />
+                <input type="number" name="speed" value={input.speed} onChange={(e) => handleChange(e)} placeholder="Enter a number between 1 - 100" />
                 <div className={styles.divError}>{errors.speed && (<span>{errors.speed}</span>)}</div>
             </div>
 
@@ -160,7 +203,7 @@ const CreatePokemon = () => {
                 <label>
                     Height
                 </label>
-                <input type="number" name="height" value={input.height} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
+                <input type="number" name="height" value={input.height} onChange={(e) => handleChange(e)} placeholder="Enter a number between 1 - 100"  />
                 <div className={styles.divError}>{errors.height && (<span>{errors.height}</span>)}</div>
             </div>
 
@@ -168,7 +211,7 @@ const CreatePokemon = () => {
                 <label>
                     Weight
                 </label>
-                <input type="number" name="weight" value={input.weight} onChange={(e) => handleChange(e)} placeholder="Enter a number"  />
+                <input type="number" name="weight" value={input.weight} onChange={(e) => handleChange(e)} placeholder="Enter a number between 1 - 100"  />
                 <div className={styles.divError}>{errors.weight && (<span>{errors.weight}</span>)}</div>
             </div>
 
@@ -176,8 +219,8 @@ const CreatePokemon = () => {
                 <label>
                     Types
                 </label>
-                <select onChange={(e) => handleSelected(e)} required>
-                    <option>Select maximum two types</option>
+                <select onChange={(e) => handleSelected(e)}>
+                    <option>Choose one or more options</option>
                     {infoTypes && infoTypes.map(el => (
                         <option key={el.id} value={el.name}>{el.name}</option>
                     ))}
@@ -186,7 +229,7 @@ const CreatePokemon = () => {
             </div>
 
             <div>
-                <input className={styles.bntSubmit} disabled={input.name && input.life && input.attack && input.defense && input.speed && input.height && input.weight && input.types.length > 0 ? false : true} type="submit" value="Create pokemon" />
+                <input className={styles.bntSubmit}  type="submit" value="Create pokemon" />
             </div>
 
             </form>

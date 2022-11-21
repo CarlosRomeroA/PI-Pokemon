@@ -87,13 +87,11 @@ export default function Home() {
                 </div>
 
                 <div className={styles.divFilter}>
-                    <button className={styles.btnReload} onClick={e => { handleClick(e) }}>Reload Filters</button>
+                    <button className={styles.btnReload} onClick={e => { handleClick(e) }}>Reset</button>
                 </div>
                 
             </div>
 
-            {/* <Paginado pokemonsPerPage={pokemonsPerPage} allPokemons={allPokemons.length} paginado={paginado} /> */}
-     
             <div className="cardspokemon">
             {
                 currentPokemons?.map((c) => {
